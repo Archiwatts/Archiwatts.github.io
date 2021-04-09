@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Patrick+Hand&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+body {
+  color: #222;
+  background-color: #d3d3d3;
+  font-family: "Oswald","Tahoma", sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  margin-left: 50px;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Patrick Hand", "Tahoma", sans-serif;
+  font-weight: 400;
+}
+
+section {
+  background-color: #f6ece2;
+  padding: 10px;
+  border-left: 2px solid #000;
+  border-right: 2px solid #000
+}
+
+h1,
+ul,
+h2 {
+  margin: 10px;
+}
+
+header,
+nav,
+main,
+footer {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+h1 {
+  padding-left: 20px;
+  margin: 10px;
+}
+
+h2 {
+  column-span: all;
+  background-color: #ff4f4f;
+  padding: 10px 0px 10px 30px;
+  margin-left: -10px;
+  margin-right: 20px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+h3 {
+  column-span: all;
+  padding: 5px 10px 10px 0px;
+  margin: 10px 10px 10px 20px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+h4 {
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+header,
+footer {
+  grid-column: 1 / -1;
+  background-color: #eee;
+  padding: 10px 0px 10px 0px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  border-left: 2px solid #000;
+}
+
+footer {
+  border-bottom: 2px solid #000;
+}
+
+nav {
+  background-color: #BADFF1;
+  padding: 10px;
+  border: 2px solid #000;
+}
+
+nav ul {
+  margin: 0px;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+nav li {
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav a,
+nav a:link,
+nav a:visited {
+  color: #222;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: rgb(252,102,0);
+  border-bottom: 5px double;
+}
+
+figure {
+  padding-top: 10px;
+}
+
+p  {
+  padding: 0px 0px 0px 0px;
+  margin: 10px;
+  box-sizing: border-box;
+  max-width: 960px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 10px;
+  text-align: left;
+}
+
+td {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+li {
+  padding: 10px;
+  max-width: 300px;
+}
+
+img {
+  border: 2px #000 solid;
+}
+
+#introduction p,
+#geography p,
+#economy p,
+#people-and-society p,
+#communication p,
+footer p {
+  padding: 10px 10px 10px 10px;
+}
+
+#introduction img,
+#geography img,
+#economy img,
+#people-and-society img {
+  overflow: auto;
+  float: left;
+  margin: 20px 30px 10px -20px;
+}
+
+#geography {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.geo-head {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.land-bound,
+.geo-resources {
+  padding: 10px;
+  margin: 10px;
+}
+
+.climate-ul {
+  padding-top: 90px;
+}
+
+.climate-ul li {
+  padding: 20px 10px 20px 10px;
+}
+
+.geo-resources li {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.geo-img {
+  margin-top: -10px;
+}
+
+#geography figcaption {
+  box-sizing: border-box;
+  max-width: 250px;
+  margin-left: -20px;
+  font-size: 14px;
+}
+
+#economy figcaption,
+#people-and-society figcaption{
+  box-sizing: border-box;
+  max-width: 400px;
+  margin-left: -20px;
+  font-size: 14px;
+}
+
+.exports,
+.imports {
+  column-count: 2;
+}
+
+.exports-from,
+.imports-from {
+  padding-top: 20px;
+}
+
+#economy ul {
+  list-style: outside;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  width: 400px;
+}
+
+.real-gdp h3{
+  width: 300px;
+}
+
+.gdp-th h3 {
+  padding-left: 10px;
+}
+
+.real-gdp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px 10px 20px 10px;
+  margin: 10px;
+}
+
+.gdp-rate {
+  margin: 10px 10px 20px 10px;
+  padding-bottom: 20px;
+}
+
+#agriculture h3 {
+  background-color: #e3e3fe;
+  column-span: all;
+  background-color: #ff4f4f;
+  padding: 10px 0px 10px 30px;
+  margin-left: -10px;
+  margin-right: 40px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;;
+  font-size: 24px;
+}
+
+.gdp-comp {
+  padding: 10px;
+  margin: 10px 10px 10px 20px;
+}
+
+#people-and-society h3 {
+  padding-top: 35px;
+}
+
+.people-language,
+.people-p {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.people-language h3 {
+  padding-top: 0px;
+}
+
+#agriculture {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#agriculture ul {
+  padding-right: 0px;
+}
+
+.argi {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.ag-products h4 {
+  padding: 25px 10px 10px 10px;
+}
+
+.industry {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.industry h3 {
+  padding-top: 20px;
+}
+
+.int-ul ul {
+  padding: 20px -10px 20px 40px;
+  margin: 10px -10px 10px 40px;
+}
+.int-ul h3 {
+ padding: 10px 10px 10px 40px;
+ margin: 20px;
+}
+
+.ethnicity {
+  padding: 0px 20px 0px 28px;
+}
+
+body {
+  background-image: url("../img/pattern-herringbone.png");
+}
+
+/* Background Pattern Made by Myriam Lefebvre*/
