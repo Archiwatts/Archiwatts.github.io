@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Patrick+Hand&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+body {
+  color: #fff;
+  font-family: "Oswald","Tahoma", sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0px;
+}
+
+#wrapper {
+
+	max-width: none;
+	margin: 0px auto;
+
+
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-gap: 0px 20px 0px 20px;
+}
+
+p {
+  padding: 10px 10px 10px 10px;
+  margin: -10px 20px 0px 30px;
+  max-width: 960px;
+}
+
+nav {
+  background: linear-gradient(0deg, #232526, #414345);
+}
+
+nav ul {
+  margin: 0px;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+nav li {
+  padding: 10px 10px 40px 10px;
+  margin: 20px;
+}
+
+nav a,
+nav a:link,
+nav a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: rgb(252,102,0);
+  border-bottom: 5px double;
+}
+
+h1{
+  margin: 10px 0px 10px 0px;
+  padding: 0px 0px 0px 120px;
+}
+
+h2 {
+	margin: 10px 0px 20px 30px;
+  padding: 10px;
+  column-span: all;
+}
+
+header,
+footer {
+	grid-column: 1 / -1;
+  background-color: #eee;
+}
+
+header,
+nav,
+section,
+footer {
+	padding: 10px;
+}
+
+.img-home {
+  column-count: 2;
+  padding: 10px;
+}
+
+.img-home img {
+margin-top: 60px;
+filter: grayscale(1);
+transition: filter 1s ease-in;
+margin-right: 1em;
+transform: scale(1);
+position: relative;
+transition: all 1s ease-in;
+}
+
+.run-city :hover,
+.geo-grass :hover{
+  filter: grayscale(0);
+  transition: filter 1s ease-in;
+  transform: scale(1.1);
+  z-index: 10;
+  transition: all 1s ease-in;
+}
+
+.run-city {
+  margin-top: 0px;
+}
+
+header img {
+  overflow: auto;
+  float: left;
+  width: 50px;
+  height: 40px;
+  margin-top: 5px;
+}
+
+.contact-info ul {
+  padding-left: 60px;
+}
+
+.contact-info li {
+  padding: 10px;
+}
+
+.contact-info {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+main {
+  max-width: 960px;
+  margin-left: 30px;
+}
+
+#main-home {
+  background-image: url("../img/web-pattern.png");
+  background-size: 100% 100%;
+}
