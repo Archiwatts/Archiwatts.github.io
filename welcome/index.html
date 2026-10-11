@@ -60,18 +60,19 @@ body:not([data-state=intro]) #back{opacity:1;pointer-events:auto}
 #back:hover,#back:focus-visible{background:var(--pink);border-color:var(--pink);color:#fff;outline:none}
 #name{position:fixed;left:var(--side);right:0;top:88%;text-align:center;font-weight:700;font-size:clamp(18px,2.4vw,24px);transform:translateY(-50%);transition:opacity .5s;pointer-events:none}
 body:not([data-state=intro]) #name{opacity:0}
-#side{position:fixed;left:0;top:0;bottom:0;width:var(--side);padding:10px;display:flex;flex-direction:column;gap:22px;z-index:4;color:var(--ink);background:#94949a;box-shadow:2px 0 12px rgba(0,0,0,.2)}
-#side .home{display:block;width:50px;cursor:pointer;align-self:flex-start}
+#side{position:fixed;left:0;top:0;width:var(--side);height:clamp(330px,56vh,520px);padding:12px 10px;display:flex;flex-direction:column;gap:22px;z-index:4;color:var(--ink);background:#cfcfd4;clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 24px),0 100%);transition:height .55s var(--ease),clip-path .55s var(--ease)}
+#side:hover,#side:focus-within{height:100vh;clip-path:polygon(0 0,100% 0,100% 100%,50% 100%,0 100%)}
+#side .home{display:block;width:66px;cursor:pointer;align-self:center}
 #side .home svg{width:100%;height:auto;display:block}
 #side ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
-#side li a{display:flex;flex-direction:row-reverse;align-items:center;gap:8px;color:var(--ink);text-align:right;text-decoration:none;font-weight:700;font-size:13px;padding:3px 0;transition:color .2s}
-#side li a:hover,#side li a:focus-visible{color:#fff}
+#side li a{display:flex;align-items:center;gap:8px;width:100%;color:var(--ink);text-align:left;text-decoration:none;font-weight:700;font-size:13px;padding:6px 8px;border-radius:6px;transition:color .2s,background .2s}
+#side li a:hover,#side li a:focus-visible{background:var(--ink);color:#fff}
 #side li a::before{content:"";width:8px;height:8px;border-radius:50%;border:2px solid currentColor;flex:none;transition:background .2s,border-color .2s}
 #side li a:hover::before,#side li a.on::before,#side li a:focus-visible::before{background:var(--pink);border-color:var(--pink)}
 #side a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
 @media (max-width:700px){
   :root{--side:0px}
-  #side{width:auto;bottom:auto;padding:16px;background:none;box-shadow:none}
+  #side,#side:hover{width:auto;height:auto;clip-path:none;padding:16px;background:none}
   #side ul{display:none}
   #side .home{width:46px}
   #menu{inset:0;left:0;top:0;width:auto;height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;pointer-events:none}
@@ -122,6 +123,7 @@ const EXTRAS=[
  {label:"Art.me",url:"https://art.me/YOUR-NAME"}
 ];
 /* ======================================================================================== */
+const EQUAL_WIDTH_NAV=true; /* true = every nav label is stretched to the same width; false = normal spacing */
 const body=document.body,logo=document.getElementById('logo'),menu=document.getElementById('menu'),tilt=document.getElementById('tilt'),back=document.getElementById('back');
 const KEY='archi-view';
 const store={get(){try{return sessionStorage.getItem(KEY)}catch(e){return null}},set(v){try{v?sessionStorage.setItem(KEY,v):sessionStorage.removeItem(KEY)}catch(e){}}};
@@ -184,9 +186,16 @@ logo.addEventListener('click',enter);
 logo.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();enter()}});
 back.addEventListener('click',up);
 const links=document.getElementById('links');
-SECTIONS.forEach((s,i)=>{const li=document.createElement('li'),a=document.createElement('a');a.href='#';a.textContent=s.label;a.dataset.sec=i;
+function lbl(a,t){const s=document.createElement('span');s.textContent=t;a.appendChild(s)}
+function equalize(){
+  if(!EQUAL_WIDTH_NAV)return;
+  const sp=[...links.querySelectorAll('a span')];sp.forEach(s=>s.style.letterSpacing='0px');
+  const w=sp.map(s=>s.getBoundingClientRect().width),mx=Math.max(...w);
+  sp.forEach((s,i)=>{s.style.letterSpacing=(mx-w[i])/Math.max(1,s.textContent.length-1)+'px'});
+}
+SECTIONS.forEach((s,i)=>{const li=document.createElement('li'),a=document.createElement('a');a.href='#';lbl(a,s.label);a.dataset.sec=i;
   a.addEventListener('click',e=>{e.preventDefault();set(i)});li.appendChild(a);links.appendChild(li)});
-EXTRAS.forEach(x=>{const li=document.createElement('li'),a=document.createElement('a');a.href=x.url;a.target='_top';a.textContent=x.label;
+EXTRAS.forEach(x=>{const li=document.createElement('li'),a=document.createElement('a');a.href=x.url;a.target='_top';lbl(a,x.label);
   a.addEventListener('click',()=>store.set(view==='intro'?null:String(view)));li.appendChild(a);links.appendChild(li)});
 document.getElementById('home').addEventListener('click',e=>{e.preventDefault();set('intro')});
 function placeName(){
@@ -214,7 +223,7 @@ function arrive(v){
   requestAnimationFrame(()=>requestAnimationFrame(()=>body.classList.remove('arrive')));
 }
 function restore(){const s=store.get();if(s!==null)arrive(s==='hub'?'hub':+s)}
-placeName();if(document.fonts)document.fonts.ready.then(placeName);
+placeName();equalize();if(document.fonts)document.fonts.ready.then(()=>{placeName();equalize()});
 restore();
 addEventListener('pageshow',e=>{if(e.persisted)restore()});
 </script>
